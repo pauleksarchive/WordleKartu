@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Kartu!</title>
+    <link rel="stylesheet" href="./assets/css/websiteStyle.css">
+    <link rel="stylesheet" href="./assets/css/gamePage.css">
+    <script src="./assets/socket.io.min.js"></script>
+    <script src="./assets/game.js"></script>
+</head>
+<body onclick="focusOnInput()">
+    <div class="game">
+        <div class="header">
+            <a href="./"><img src="./assets/LOGO.svg" alt="Logo"></a>
+        </div>
+        <div class="words">
+            <div class="box" data-place="1-1"></div>
+            <div class="box" data-place="1-2"></div>
+            <div class="box" data-place="1-3"></div>
+            <div class="box" data-place="1-4"></div>
+            <div class="box" data-place="1-5"></div>
+            <div class="box" data-place="2-1"></div>
+            <div class="box" data-place="2-2"></div>
+            <div class="box" data-place="2-3"></div>
+            <div class="box" data-place="2-4"></div>
+            <div class="box" data-place="2-5"></div>
+            <div class="box" data-place="3-1"></div>
+            <div class="box" data-place="3-2"></div>
+            <div class="box" data-place="3-3"></div>
+            <div class="box" data-place="3-4"></div>
+            <div class="box" data-place="3-5"></div>
+            <div class="box" data-place="4-1"></div>
+            <div class="box" data-place="4-2"></div>
+            <div class="box" data-place="4-3"></div>
+            <div class="box" data-place="4-4"></div>
+            <div class="box" data-place="4-5"></div>
+            <div class="box" data-place="5-1"></div>
+            <div class="box" data-place="5-2"></div>
+            <div class="box" data-place="5-3"></div>
+            <div class="box" data-place="5-4"></div>
+            <div class="box" data-place="5-5"></div>
+        </div>
+        <div class="information">
+            <div class="gameStatus">
+                <p id="gameStatusName"></p>
+                <p id="timer"></p>
+            </div>
+            <div class="userStatus">
+                <p id="position"></p>
+                <p id="wins"></p>
+            </div>
+        </div>
+    </div>
+
+    <input type="text" name="guess" id="guess" oninput="handleInput()">
+
+    <div id="notice">
+        Kad pradėtum rašyti, spustelk ant puslapio! Šis tekstas, tai padarius, pradings automatiškai.
+    </div>
+</body>
+</html>

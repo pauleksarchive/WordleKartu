@@ -1,0 +1,90 @@
+.invisible {
+    display: none;
+}
+
+details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0.5em 0.5em 0;
+}
+
+summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+}
+
+details[open] {
+    padding: 0.5em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 0.5em;
+}
+
+details {
+    margin: 0 0 8px 0;
+}
+
+.gameSelection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    align-items: center;
+}
+
+.gameSelection > img {
+    width: 100%;
+    max-width: 90%;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    place-items: center;
+    justify-content: center;
+}
+
+.loading > svg {
+    animation: rotate infinite 500ms;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+input {
+    border: 3px solid black;
+    padding: 12px;
+    width: 90%;
+    font-size: 24px;
+    font-family: inherit;
+    max-width: 200px;
+    border-radius: 10px;
+    margin: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+button {
+    font-size: 24px;
+    padding: 8px;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+a {
+    color: black;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "wordlekartu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/static": "^5.0.1",
+    "fastify": "^3.29.0",
+    "fastify-socket.io": "^3.0.0"
+  }
+}

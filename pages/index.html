@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Kartu!</title>
+    <link rel="stylesheet" href="./assets/css/websiteStyle.css">
+    <link rel="stylesheet" href="./assets/css/mainPage.css">
+    <script src="./assets/mainmenu.js"></script>
+</head>
+
+<body>
+    <div id="snackbar"></div>
+
+    <div class="game" id="maincontent">
+        <div class="gameSelection">
+            <img src="./assets/LOGO.svg" alt="Logo">
+            <input type="text" id="code">
+            <button id="codeButton" data-translation-id="search-for-game" onclick="fetchGame()">Prisijungti prie
+                kambario</button>
+            <a href="./new">
+                <p style="text-decoration: underline;">arba sukurk naują kambarį!</p>
+            </a>
+            <p style="color: red;">ČIA - TIK PROTOTIPAS</p>
+        </div>
+        <hr>
+        <h3>Dažniausiai užduodami klausimai</h3>
+        <details>
+            <summary>Kas yra Wordle?</summary>
+            Placeholder'is
+        </details>
+        <details>
+            <summary>Kaip veikia "Wordle Kartu"?</summary>
+            Placeholder'is
+        </details>
+        <details>
+            <summary>Kaip pakviesti savo draugus žaisti kartu?</summary>
+            Placeholder'is
+        </details>
+    </div>
+
+    <div class="invisible" id="loading">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50">
+            <defs></defs>
+            <path fill="#000000" d="M44 25.1a18.7 18.7 0 10-37.4 0h4a14.6 14.6 0 0129.3 0h4z"></path>
+        </svg>
+        <p style="font-weight: 700;">Jungiamasi...</p>
+    </div>
+
+    <script>document.getElementById('loading').hidden = true;</script>
+</body>
+
+</html>
