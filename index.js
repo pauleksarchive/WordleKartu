@@ -44,7 +44,7 @@ fastify.get('/', (req, res) => {
     res.sendPage(path.join(__dirname, 'pages', 'index.html'));
 });
 
-fastify.listen(6969, '0.0.0.0', (err, address) => {
+fastify.listen(process.env.PORT || 6969, '0.0.0.0', (err, address) => {
     if (err) return console.error(err);
 
     console.log(`Klausomasi ${address}`);
