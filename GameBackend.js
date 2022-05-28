@@ -33,7 +33,7 @@ module.exports = async (io, RunningGames, gameCode) => {
         roomEmpty: false
     }
 
-    let gameStart = () => {}, Intermission = () => {};
+    let gameStart = () => {}, Intermission = () => {}, player = [];;
 
     Intermission = async () => {
         if (io.sockets.size == 0 && GameInfoData.roomEmpty == true) {
@@ -62,6 +62,7 @@ module.exports = async (io, RunningGames, gameCode) => {
         GameInfoData.status.until = Date.now() + 30000;
         GameInfoData.status.functionToEmitNext = Intermission;
         GameInfoData.playersWhoAnsweredCorrectly = [];
+        player = [];
         GameInfoData.players.forEach((player) => player.guesses = 0);
 
         console.log(`Gamestart ${gameCode} ${GameInfoData.word}`);
@@ -73,6 +74,7 @@ module.exports = async (io, RunningGames, gameCode) => {
 
     /* CONNECTION HANDLING */
     io.on('connection', (socket) => {
+        console.log(`${socket.id} joined!`);
         socket.emit('room update', JSON.stringify({ status: GameInfoData.status }));
 
         GameInfoData.playerCount++;
@@ -82,21 +84,23 @@ module.exports = async (io, RunningGames, gameCode) => {
             if (GameInfoData.status.stage !== GameStatus.GameActive) return;
             if (!/[a-zA-Z]/g.test(data)) return;
             
-            let player = GameInfoData.players.get(socket.id);
-            if (player.guesses >= 5) return;
+            
+            player[socket.id] = GameInfoData.players.get(socket.id);
+            console.dir(player);
+            if (player[socket.id].guesses >= 5) return;
             if (data.length != 5) return;
             if (GameInfoData.playersWhoAnsweredCorrectly.includes(socket.id)) return;
 
-            player.guesses++;
+            player[socket.id].guesses++;
 
             if (data.toLowerCase() == GameInfoData.word) {
                 GameInfoData.playersWhoAnsweredCorrectly.push(socket.id);
-                player.wins++;
+                player[socket.id].wins++;
             }
 
-            GameInfoData.players.set(socket.id, player);
+            GameInfoData.players.set(socket.id, player[socket.id]);
             let letters = WordleAlgo(GameInfoData.word.toLowerCase(), data.toLowerCase());
-            let dataToSend = { guesses: player.guesses, answeredCorrectly: (GameInfoData.playersWhoAnsweredCorrectly.includes(socket.id) ? true : false), letters }
+            let dataToSend = { guesses: player[socket.id].guesses, answeredCorrectly: (GameInfoData.playersWhoAnsweredCorrectly.includes(socket.id) ? true : false), letters }
             socket.emit('answer feedback', JSON.stringify(dataToSend));
         });
         
